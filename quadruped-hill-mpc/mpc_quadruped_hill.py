@@ -42,7 +42,7 @@ renderer = mujoco.Renderer(model, 480, 640)
 frames, fps = [], 30
 with agent_lib.Agent(task_id="Quadruped Hill", model=model) as agent:
     agent.reset()
-    while data.time < 5.0:
+    while data.time < 30.0:
         agent.set_state(time=data.time, qpos=data.qpos, qvel=data.qvel,
                         act=data.act, mocap_pos=data.mocap_pos,
                         mocap_quat=data.mocap_quat)
@@ -50,7 +50,7 @@ with agent_lib.Agent(task_id="Quadruped Hill", model=model) as agent:
         data.ctrl = agent.get_action()
         mujoco.mj_step(model, data)
         if len(frames) < data.time * fps:
-            renderer.update_scene(data)
+            renderer.update_scene(data, camera=-1)
             frames.append(renderer.render())
 
 print(f"Condition: {CONDITION}")
