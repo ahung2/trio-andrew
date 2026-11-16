@@ -4,10 +4,10 @@ import pathlib, mujoco, imageio, shutil
 from mujoco_mpc import agent as agent_lib
 
 # --- experiment parameters, change these each run ---
-CONDITION = "locked"
-FRICTIONLOSS = 20.0
-DAMPING = 50.0
-DAMPING_ABDUCTION = 30.0
+CONDITION = "bisect_1"
+FRICTIONLOSS = 2.0
+DAMPING = 7.5
+DAMPING_ABDUCTION = 4.5
 
 # --- patch a1_modified.xml with current parameters ---
 a1_src = pathlib.Path('/home/ahung2/mujoco_mpc_new/build/mjpc/tasks/quadruped/a1_base.xml')
